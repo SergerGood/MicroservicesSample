@@ -24,7 +24,7 @@ internal class CreateProductCommandHandler : ICommandHandler<CreateProductComman
             ImageFile = command.ImageFile,
             Price = command.Price
         };
-        
+
         return new CreateProductResult(Guid.NewGuid());
     }
 }
