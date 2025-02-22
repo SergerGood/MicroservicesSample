@@ -1,0 +1,11 @@
+﻿POST https://localhost:5050/products
+Content-Type: application/json
+
+{
+  "Name": "New Product",
+  "Category": ["c1", "c2"],
+  "Description": "New Product Description",
+  "ImageFile": "ImageFile Product",
+  "Price": 100
+}
+
