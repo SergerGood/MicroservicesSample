@@ -31,3 +31,6 @@ Content-Type: application/json
   "ImageFile": "ImageFile Product Updated",
   "Price": 200
 }
+
+### DELETE request
+DELETE https://{{ServiceHost}}:{{ServicePort}}/products/01953409-7395-4f0a-b62e-e772668d380a
