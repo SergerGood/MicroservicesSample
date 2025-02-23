@@ -7,7 +7,6 @@ services:
 
   catalogdb:
     image: postgres
-    restart: always
 
 volumes:
   postgres_catalog:
