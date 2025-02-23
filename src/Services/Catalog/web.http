@@ -1,4 +1,5 @@
-﻿POST https://localhost:5050/products
+﻿### POST request
+POST https://{{ServiceHost}}:{{ServicePort}}/products
 Content-Type: application/json
 
 {
@@ -9,3 +10,6 @@ Content-Type: application/json
   "Price": 100
 }
 
+### GET query
+GET https://{{ServiceHost}}:{{ServicePort}}/products
+Accept: application/json
