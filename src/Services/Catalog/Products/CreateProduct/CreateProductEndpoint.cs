@@ -13,7 +13,7 @@ public class CreateProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/products", Handler)
+        app.MapPost("/products", Handle)
             .WithName("CreateProduct")
             .Produces<CreateProductResponse>(StatusCodes.Status201Created)
             .ProducesProblem(StatusCodes.Status400BadRequest)
@@ -21,7 +21,7 @@ public class CreateProductEndpoint : ICarterModule
             .WithDescription("Creates a new product in the catalog");
     }
 
-    private static async Task<IResult> Handler(CreateProductRequest request, ISender sender)
+    private static async Task<IResult> Handle(CreateProductRequest request, ISender sender)
     {
         var command = request.Adapt<CreateProductCommand>();
         var result = await sender.Send(command);
