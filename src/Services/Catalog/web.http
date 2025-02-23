@@ -12,8 +12,9 @@ Content-Type: application/json
 
 ### GET query
 GET https://{{ServiceHost}}:{{ServicePort}}/products
-Accept: application/json
 
 ### GET query by id
 GET https://{{ServiceHost}}:{{ServicePort}}/products/01953286-fb4a-4a43-a727-f21d8a6a81dd
-Accept: application/json
+
+### GET query by category
+GET https://{{ServiceHost}}:{{ServicePort}}/products/category/c3
