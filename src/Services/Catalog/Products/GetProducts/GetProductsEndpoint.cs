@@ -1,5 +1,7 @@
 ﻿namespace Catalog.API.Products.GetProducts;
 
+public record GetProductRequest(int? PageNumber = 1, int? PageSize = 10);
+
 public record GetProductsResponse(IEnumerable<Product> Products);
 
 public class GetProductsEndpoint : ICarterModule
@@ -14,9 +16,10 @@ public class GetProductsEndpoint : ICarterModule
             .WithDescription("Get products");
     }
 
-    private static async Task<IResult> Handle(ISender sender)
+    private static async Task<IResult> Handle([AsParameters] GetProductRequest request, ISender sender)
     {
-        var result = await sender.Send(new GetProductsQuery());
+        var query = request.Adapt<GetProductsQuery>();
+        var result = await sender.Send(query);
         var response = result.Adapt<GetProductsResult>();
 
         return Results.Ok(response);
