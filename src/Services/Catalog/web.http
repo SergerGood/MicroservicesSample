@@ -33,4 +33,4 @@ Content-Type: application/json
 }
 
 ### DELETE request
-DELETE https://{{ServiceHost}}:{{ServicePort}}/products/01953409-7395-4f0a-b62e-e772668d380a
+DELETE https://{{ServiceHost}}:{{ServicePort}}/products/01953286-fb4a-4a43-a727-f21d8a6a81dd
