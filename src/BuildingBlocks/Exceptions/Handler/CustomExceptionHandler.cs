@@ -15,13 +15,13 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger)
         logger.LogError("Error Message: {ExceptionMessage}, Time of occurrence {Time}",
             exception.Message, DateTime.UtcNow);
 
-        (string Details, string Title, int StausCode) details = GetExceptionDetails(httpContext, exception);
+        var (details, title, statusCode) = GetExceptionDetails(httpContext, exception);
 
         var problemDetails = new ProblemDetails
         {
-            Title = details.Title,
-            Status = details.StausCode,
-            Detail = details.Details,
+            Title = title,
+            Status = statusCode,
+            Detail = details,
             Instance = httpContext.Request.Path
         };
 
@@ -35,40 +35,17 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger)
         return true;
     }
 
-    private static (string Message, string Name, int) GetExceptionDetails(HttpContext httpContext, Exception exception)
+    private static (string, string, int) GetExceptionDetails(HttpContext httpContext, Exception exception)
     {
-        return exception switch
+        var statusCode = exception switch
         {
-            InternalServerException =>
-            (
-                exception.Message,
-                exception.GetType().Name,
-                httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError
-            ),
-            ValidationException =>
-            (
-                exception.Message,
-                exception.GetType().Name,
-                httpContext.Response.StatusCode = StatusCodes.Status400BadRequest
-            ),
-            BadRequestException =>
-            (
-                exception.Message,
-                exception.GetType().Name,
-                httpContext.Response.StatusCode = StatusCodes.Status400BadRequest
-            ),
-            NotFoundException =>
-            (
-                exception.Message,
-                exception.GetType().Name,
-                httpContext.Response.StatusCode = StatusCodes.Status404NotFound
-            ),
-            _ =>
-            (
-                exception.Message,
-                exception.GetType().Name,
-                httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError
-            )
+            InternalServerException => httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError,
+            ValidationException => httpContext.Response.StatusCode = StatusCodes.Status400BadRequest,
+            BadRequestException => httpContext.Response.StatusCode = StatusCodes.Status400BadRequest,
+            NotFoundException => httpContext.Response.StatusCode = StatusCodes.Status404NotFound,
+            _ => httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError
         };
+
+        return (exception.Message, exception.GetType().Name, statusCode);
     }
 }
