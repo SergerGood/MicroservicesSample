@@ -12,19 +12,21 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        logger.LogInformation("Begin Handle <{Request},{Response}> {@RequestData}",
-            typeof(TRequest).Name, typeof(TResponse).Name, request);
+        var requestName = typeof(TRequest).Name;
+        var responseName = typeof(TResponse).Name;
 
+        logger.LogInformation("Begin Handle <{Request},{Response}> {@RequestData}", requestName, responseName, request);
         var stopwatch = Stopwatch.StartNew();
+
         var response = await next();
+
         stopwatch.Stop();
 
         if (stopwatch.Elapsed.Seconds > 3)
-        {
-            logger.LogWarning("[PERF] The request {Request} took {TimeTaken} ms",
-                typeof(TRequest).Name, stopwatch.ElapsedMilliseconds);
-        }
-        logger.LogInformation("End Handled <{Request},{Response}>", typeof(TRequest).Name, typeof(TResponse).Name);
+            logger.LogWarning("[PERF] The request {Request} took {TimeTaken} ms", requestName,
+                stopwatch.ElapsedMilliseconds);
+
+        logger.LogInformation("End Handled <{Request},{Response}>", requestName, responseName);
 
         return response;
     }
