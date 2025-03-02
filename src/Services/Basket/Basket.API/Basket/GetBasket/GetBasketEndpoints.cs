@@ -1,7 +1,5 @@
 ﻿namespace Basket.API.Basket.GetBasket;
 
-public record GetBasketRequest(string UserName);
-
 public record GetBasketResponse(ShoppingCart Cart);
 
 public class GetBasketEndpoints : ICarterModule
@@ -18,7 +16,7 @@ public class GetBasketEndpoints : ICarterModule
 
     private static async Task<IResult> Handle(string userName, ISender sender)
     {
-        var request = new GetBasketRequest(userName);
+        var request = new GetBasketQuery(userName);
         var result = await sender.Send(request);
         var response = result.Adapt<GetBasketResponse>();
 

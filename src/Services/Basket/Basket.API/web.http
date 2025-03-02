@@ -1,0 +1,25 @@
+﻿### GET by user
+GET https://{{ServiceHost}}:{{ServicePort}}/basket/asd
+
+
+### POST request
+POST https://{{ServiceHost}}:{{ServicePort}}/basket
+Content-Type: application/json
+
+{
+  "Cart": {
+    "UserName": "User Name",
+    "Items": [
+      {
+        "Quantity": 2,
+        "Color": "Red",
+        "Price": 500,
+        "ProductId": "729A6A06-D589-444B-BCB2-29649C32D22C",
+        "ProductName": "IPhone"
+      }
+    ]
+  }
+}
+
+### DELETE request
+DELETE https://{{ServiceHost}}:{{ServicePort}}/basket/User Name
