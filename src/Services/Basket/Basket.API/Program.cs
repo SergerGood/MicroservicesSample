@@ -1,11 +1,13 @@
 using Basket.API.Data;
 using BuildingBlocks.Behaviors;
+using BuildingBlocks.Exceptions.Handler;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var assembly = typeof(Program).Assembly;
 
 builder.Services
+    .AddExceptionHandler<CustomExceptionHandler>()
     .AddMediatR(configuration =>
     {
         configuration.RegisterServicesFromAssembly(assembly);
@@ -27,6 +29,7 @@ builder.Services
 var app = builder.Build();
 
 app.MapCarter();
+app.UseExceptionHandler(_ => { });
 
 app.Run();
 return;
