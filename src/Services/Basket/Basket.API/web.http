@@ -1,5 +1,5 @@
 ﻿### GET by user
-GET https://{{ServiceHost}}:{{ServicePort}}/basket/asd
+GET https://{{ServiceHost}}:{{ServicePort}}/basket/User Name
 
 
 ### POST request

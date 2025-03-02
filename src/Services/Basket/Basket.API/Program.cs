@@ -1,3 +1,4 @@
+using Basket.API.Data;
 using BuildingBlocks.Behaviors;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services
     .AddCarter();
 
 builder.Services
+    .AddScoped<IBasketRepository, BasketRepository>()
     .AddMarten(options =>
     {
         options.Connection(GetConnectionString(builder));
