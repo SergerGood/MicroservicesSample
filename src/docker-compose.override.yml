@@ -27,7 +27,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_catalog:/var/lib/postgresql/data
-        
+  
   basketdb:
     container_name: basketdb
     environment:
@@ -39,3 +39,9 @@ services:
       - "5433:5432"
     volumes:
       - postgres_basket:/var/lib/postgresql/data
+  
+  distributed_basket_cache:
+    container_name: distributed_basket_cache
+    restart: always
+    ports:
+      - "6379:6379"
