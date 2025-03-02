@@ -26,6 +26,13 @@ builder.Services
     })
     .UseLightweightSessions();
 
+builder.Services
+    .Decorate<IBasketRepository, CachedBasketRepository>()
+    .AddStackExchangeRedisCache(options =>
+    {
+        options.Configuration = builder.Configuration.GetConnectionString("Redis");
+    });
+
 var app = builder.Build();
 
 app.MapCarter();
