@@ -23,3 +23,6 @@ Content-Type: application/json
 
 ### DELETE request
 DELETE https://{{ServiceHost}}:{{ServicePort}}/basket/User Name
+
+### HC
+GET https://{{ServiceHost}}:{{ServicePort}}/hc
