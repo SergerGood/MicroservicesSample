@@ -7,6 +7,10 @@ services:
 
   catalogdb:
     image: postgres
+    
+  basketdb:
+    image: postgres
 
 volumes:
   postgres_catalog:
+  postgres_basket:
