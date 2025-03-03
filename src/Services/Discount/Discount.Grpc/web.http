@@ -1,0 +1,5 @@
+﻿GRPC grpcs://{{ServiceHost}}:{{ServicePort}}/greet.Greeter/SayHello
+
+{
+  "name": "User"
+}
