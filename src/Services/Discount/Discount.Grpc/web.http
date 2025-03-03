@@ -1,5 +1,5 @@
-﻿GRPC grpcs://{{ServiceHost}}:{{ServicePort}}/greet.Greeter/SayHello
+﻿GRPC grpcs://{{ServiceHost}}:{{ServicePort}}/discount.DiscountProtoService/GetDiscount
 
 {
-  "name": "User"
+  "productName": "Product1"
 }
