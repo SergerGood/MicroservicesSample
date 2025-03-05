@@ -16,11 +16,11 @@ message GetDiscountRequest {
 }
 
 message CreateDiscountRequest {
-  string productName = 1;
+  CouponModel coupon = 1;
 }
 
 message UpdateDiscountRequest {
-  string productName = 1;
+  CouponModel coupon = 1;
 }
 
 message DeleteDiscountRequest {
@@ -28,7 +28,7 @@ message DeleteDiscountRequest {
 }
 
 message DeleteDiscountResponse {
-  string success = 1;
+  bool success = 1;
 }
 
 message CouponModel {

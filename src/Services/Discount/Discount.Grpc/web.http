@@ -3,3 +3,14 @@
 {
   "productName": "Product1"
 }
+
+###
+GRPC grpcs://{{ServiceHost}}:{{ServicePort}}/discount.DiscountProtoService/CreateDiscount
+
+{
+  "coupon": {
+    "amount" : 1200,
+    "productName": "new",
+    "description": "description"
+  }
+}
