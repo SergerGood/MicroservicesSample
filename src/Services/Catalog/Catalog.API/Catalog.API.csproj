@@ -6,12 +6,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <UserSecretsId>91f8f5fb-9c2c-4481-8f54-c18f02eec5bc</UserSecretsId>
-        <DockerfileContext>..\..</DockerfileContext>
-        <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+        <DockerfileContext>..\..\..</DockerfileContext>
+        <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="..\..\.dockerignore">
+        <Content Include="..\..\..\.dockerignore">
             <Link>.dockerignore</Link>
         </Content>
     </ItemGroup>
