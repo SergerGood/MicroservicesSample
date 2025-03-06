@@ -1,41 +1,51 @@
 using Basket.API.Data;
 using BuildingBlocks.Behaviors;
 using BuildingBlocks.Exceptions.Handler;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var assembly = typeof(Program).Assembly;
+var configuration = builder.Configuration;
 
 builder.Services
-    .AddExceptionHandler<CustomExceptionHandler>()
-    .AddMediatR(configuration =>
+    .AddMediatR(options =>
     {
-        configuration.RegisterServicesFromAssembly(assembly);
-        configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
-        configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+        options.RegisterServicesFromAssembly(assembly);
+        options.AddOpenBehavior(typeof(ValidationBehavior<,>));
+        options.AddOpenBehavior(typeof(LoggingBehavior<,>));
     })
-    .AddValidatorsFromAssembly(assembly)
     .AddCarter();
 
 builder.Services
     .AddScoped<IBasketRepository, BasketRepository>()
+    .Decorate<IBasketRepository, CachedBasketRepository>()
     .AddMarten(options =>
     {
-        options.Connection(GetDbConnectionString(builder));
+        options.Connection(GetDbConnectionString(configuration));
         options.Schema.For<ShoppingCart>().Identity(x => x.UserName);
     })
     .UseLightweightSessions();
 
 builder.Services
-    .Decorate<IBasketRepository, CachedBasketRepository>()
-    .AddStackExchangeRedisCache(options => options.Configuration = GetRedisConnectionString(builder));
+    .AddStackExchangeRedisCache(options => options.Configuration = GetRedisConnectionString(configuration));
+
+builder.Services
+    .AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    {
+        options.Address = new Uri(GetDiscountAddress(configuration));
+    });
+
+builder.Services
+    .AddExceptionHandler<CustomExceptionHandler>()
+    .AddValidatorsFromAssembly(assembly);
 
 builder.Services
     .AddHealthChecks()
-    .AddNpgSql(GetDbConnectionString(builder))
-    .AddRedis(GetRedisConnectionString(builder));
+    .AddNpgSql(GetDbConnectionString(configuration))
+    .AddRedis(GetRedisConnectionString(configuration));
 
 var app = builder.Build();
 
@@ -50,14 +60,20 @@ app.UseHealthChecks("/hc",
 app.Run();
 return;
 
-string GetDbConnectionString(WebApplicationBuilder webApplicationBuilder)
+string GetDbConnectionString(ConfigurationManager configurationManager)
 {
-    return webApplicationBuilder.Configuration.GetConnectionString("Database")
+    return configurationManager.GetConnectionString("Database")
            ?? throw new InvalidOperationException("Database connection string is missing");
 }
 
-string GetRedisConnectionString(WebApplicationBuilder webApplicationBuilder)
+string GetRedisConnectionString(ConfigurationManager configurationManager)
 {
-    return webApplicationBuilder.Configuration.GetConnectionString("Redis")
+    return configurationManager.GetConnectionString("Redis")
            ?? throw new InvalidOperationException("Redis connection string is missing");
+}
+
+string GetDiscountAddress(ConfigurationManager configurationManager)
+{
+    return configurationManager["GrpcSettings:DiscountAddress"]
+           ?? throw new InvalidOperationException("Discount address is missing");
 }
