@@ -31,4 +31,8 @@
         <Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="discount.db-shm" />
+    </ItemGroup>
+
 </Project>
