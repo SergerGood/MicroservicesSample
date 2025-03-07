@@ -36,6 +36,10 @@ builder.Services
     .AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
     {
         options.Address = new Uri(GetDiscountAddress(configuration));
+    })
+    .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+    {
+        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
     });
 
 builder.Services
