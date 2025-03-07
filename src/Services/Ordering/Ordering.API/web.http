@@ -1,0 +1,2 @@
+﻿### HC
+GET https://{{ServiceHost}}:{{ServicePort}}/hc
