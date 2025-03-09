@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "src\Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "src\Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{61462337-C2AA-4097-900D-F6EC8C537B5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastucture", "src\Services\Ordering\Ordering.Infrastucture\Ordering.Infrastucture.csproj", "{C8D627AD-DDD6-44C5-9689-1D401C7FCD3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "src\Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{F5CAF49E-F6A8-4D4E-A603-7275197218D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,10 +71,10 @@ Global
 		{61462337-C2AA-4097-900D-F6EC8C537B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61462337-C2AA-4097-900D-F6EC8C537B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61462337-C2AA-4097-900D-F6EC8C537B5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8D627AD-DDD6-44C5-9689-1D401C7FCD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8D627AD-DDD6-44C5-9689-1D401C7FCD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8D627AD-DDD6-44C5-9689-1D401C7FCD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8D627AD-DDD6-44C5-9689-1D401C7FCD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5CAF49E-F6A8-4D4E-A603-7275197218D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5CAF49E-F6A8-4D4E-A603-7275197218D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5CAF49E-F6A8-4D4E-A603-7275197218D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5CAF49E-F6A8-4D4E-A603-7275197218D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,7 +91,7 @@ Global
 		{53BCB31B-C293-40A6-ADD1-46F53ED689F5} = {F2A9B53D-34C3-475B-BF37-46BC0A84FCC3}
 		{3D4028C3-2408-4841-8D3D-F8D5356A7354} = {F2A9B53D-34C3-475B-BF37-46BC0A84FCC3}
 		{61462337-C2AA-4097-900D-F6EC8C537B5A} = {F2A9B53D-34C3-475B-BF37-46BC0A84FCC3}
-		{C8D627AD-DDD6-44C5-9689-1D401C7FCD3D} = {F2A9B53D-34C3-475B-BF37-46BC0A84FCC3}
+		{F5CAF49E-F6A8-4D4E-A603-7275197218D8} = {F2A9B53D-34C3-475B-BF37-46BC0A84FCC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3714FDDE-694B-45E5-91FF-46F9AD37727C}
