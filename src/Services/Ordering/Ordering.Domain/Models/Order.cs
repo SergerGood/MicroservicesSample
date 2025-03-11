@@ -10,11 +10,11 @@ public class Order : Aggregate<OrderId>
 
     public OrderName OrderName { get; private set; }
 
-    public Address? ShippingAddress { get; private set; }
+    public Address ShippingAddress { get; private set; }
 
-    public Address? BillingAddress { get; private set; }
+    public Address BillingAddress { get; private set; }
 
-    public Payment? Payment { get; private set; }
+    public Payment Payment { get; private set; }
 
     public OrderStatus Status { get; private set; } = OrderStatus.Pending;
 

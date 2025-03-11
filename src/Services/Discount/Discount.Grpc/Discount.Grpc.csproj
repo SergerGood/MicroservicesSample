@@ -1,9 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <UserSecretsId>c4547f6e-6751-4b68-94d0-0ecf3325e150</UserSecretsId>
         <DockerfileContext>..\..\..</DockerfileContext>
@@ -11,14 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
-        <PackageReference Include="Mapster" Version="7.4.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.2">
+        <PackageReference Include="Grpc.AspNetCore"/>
+        <PackageReference Include="Mapster"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -28,11 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="discount.db-shm" />
+        <Protobuf Include="Protos\discount.proto" GrpcServices="Server"/>
     </ItemGroup>
 
 </Project>
