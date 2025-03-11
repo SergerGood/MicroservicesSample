@@ -23,8 +23,10 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
         stopwatch.Stop();
 
         if (stopwatch.Elapsed.Seconds > 3)
+        {
             logger.LogWarning("[PERF] The request {Request} took {TimeTaken} ms", requestName,
                 stopwatch.ElapsedMilliseconds);
+        }
 
         logger.LogInformation("End Handled <{Request},{Response}>", requestName, responseName);
 

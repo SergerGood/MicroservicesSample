@@ -24,7 +24,9 @@ builder.Services
     .UseLightweightSessions();
 
 if (builder.Environment.IsDevelopment())
+{
     builder.Services.InitializeMartenWith<CatalogInitialData>();
+}
 
 builder.Services
     .AddHealthChecks()
@@ -43,8 +45,6 @@ app.UseHealthChecks("/hc",
 app.Run();
 return;
 
-string GetConnectionString(WebApplicationBuilder webApplicationBuilder)
-{
-    return webApplicationBuilder.Configuration.GetConnectionString("Database")
-           ?? throw new InvalidOperationException("Database connection string is missing");
-}
+string GetConnectionString(WebApplicationBuilder webApplicationBuilder) =>
+    webApplicationBuilder.Configuration.GetConnectionString("Database")
+    ?? throw new InvalidOperationException("Database connection string is missing");

@@ -64,20 +64,14 @@ app.UseHealthChecks("/hc",
 app.Run();
 return;
 
-string GetDbConnectionString(ConfigurationManager configurationManager)
-{
-    return configurationManager.GetConnectionString("Database")
-           ?? throw new InvalidOperationException("Database connection string is missing");
-}
+string GetDbConnectionString(ConfigurationManager configurationManager) =>
+    configurationManager.GetConnectionString("Database")
+    ?? throw new InvalidOperationException("Database connection string is missing");
 
-string GetRedisConnectionString(ConfigurationManager configurationManager)
-{
-    return configurationManager.GetConnectionString("Redis")
-           ?? throw new InvalidOperationException("Redis connection string is missing");
-}
+string GetRedisConnectionString(ConfigurationManager configurationManager) =>
+    configurationManager.GetConnectionString("Redis")
+    ?? throw new InvalidOperationException("Redis connection string is missing");
 
-string GetDiscountAddress(ConfigurationManager configurationManager)
-{
-    return configurationManager["GrpcSettings:DiscountAddress"]
-           ?? throw new InvalidOperationException("Discount address is missing");
-}
+string GetDiscountAddress(ConfigurationManager configurationManager) =>
+    configurationManager["GrpcSettings:DiscountAddress"]
+    ?? throw new InvalidOperationException("Discount address is missing");

@@ -4,7 +4,10 @@ Content-Type: application/json
 
 {
   "Name": "New Product",
-  "Category": ["c1", "c2"],
+  "Category": [
+    "c1",
+    "c2"
+  ],
   "Description": "New Product Description",
   "ImageFile": "ImageFile Product",
   "Price": 100
@@ -29,7 +32,10 @@ Content-Type: application/json
 {
   "Id": "01953286-fb4a-4a43-a727-f21d8a6a81dd",
   "Name": "New Product Updated",
-  "Category": ["c1", "c2"],
+  "Category": [
+    "c1",
+    "c2"
+  ],
   "Description": "New Product Description Updated",
   "ImageFile": "ImageFile Product Updated",
   "Price": 200

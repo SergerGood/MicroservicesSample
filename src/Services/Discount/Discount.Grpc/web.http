@@ -9,7 +9,7 @@ GRPC grpcs://{{ServiceHost}}:{{ServicePort}}/discount.DiscountProtoService/Creat
 
 {
   "coupon": {
-    "amount" : 1200,
+    "amount": 1200,
     "productName": "new",
     "description": "description"
   }

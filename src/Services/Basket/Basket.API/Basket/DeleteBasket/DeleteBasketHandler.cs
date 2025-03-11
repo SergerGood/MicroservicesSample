@@ -8,10 +8,7 @@ public record DeleteBasketResult(bool IsSuccess);
 
 internal class DeleteBasketValidator : AbstractValidator<DeleteBasketCommand>
 {
-    public DeleteBasketValidator()
-    {
-        RuleFor(x => x.UserName).NotEmpty().WithMessage("User name is required");
-    }
+    public DeleteBasketValidator() => RuleFor(x => x.UserName).NotEmpty().WithMessage("User name is required");
 }
 
 internal class DeleteBasketCommandHandler(IBasketRepository repository)

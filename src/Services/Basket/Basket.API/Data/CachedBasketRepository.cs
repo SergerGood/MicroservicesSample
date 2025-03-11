@@ -9,9 +9,11 @@ public class CachedBasketRepository(IBasketRepository repository, IDistributedCa
     public async Task<ShoppingCart> GetBasketAsync(string userName, CancellationToken cancellationToken = default)
     {
         var cachedBasket = await cache.GetStringAsync(userName, cancellationToken);
-        
-        if (!string.IsNullOrWhiteSpace(cachedBasket)) 
+
+        if (!string.IsNullOrWhiteSpace(cachedBasket))
+        {
             return JsonSerializer.Deserialize<ShoppingCart>(cachedBasket);
+        }
 
         var basket = await repository.GetBasketAsync(userName, cancellationToken);
         await cache.SetStringAsync(userName, JsonSerializer.Serialize(basket), cancellationToken);

@@ -9,7 +9,9 @@ public class CatalogInitialData : IInitialData
         await using var session = store.LightweightSession();
 
         if (await session.Query<Product>().AnyAsync(cancellation))
+        {
             return;
+        }
 
         session.Store(GetPreconfiguredProducts());
         await session.SaveChangesAsync(cancellation);

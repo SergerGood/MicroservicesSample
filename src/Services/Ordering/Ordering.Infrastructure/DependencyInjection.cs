@@ -9,7 +9,7 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("Database")
-                               ?? throw new IOException("Database connection string not found");
+            ?? throw new IOException("Database connection string not found");
         return services;
     }
 }

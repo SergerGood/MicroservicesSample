@@ -9,7 +9,9 @@ public record ProductId
     public static ProductId Of(Guid value)
     {
         if (value == Guid.Empty)
+        {
             throw new DomainException("Product id cannot be empty");
+        }
 
         return new ProductId(value);
     }

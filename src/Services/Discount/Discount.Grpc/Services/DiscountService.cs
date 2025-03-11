@@ -12,8 +12,8 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
     public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
     {
         var coupon = await dbContext.Coupons
-                         .FirstOrDefaultAsync(x => x.ProductName == request.ProductName)
-                     ?? new Coupon { ProductName = "No Discount", Amount = 0, Description = "No Discount" };
+                .FirstOrDefaultAsync(x => x.ProductName == request.ProductName)
+            ?? new Coupon { ProductName = "No Discount", Amount = 0, Description = "No Discount" };
 
         logger.LogInformation("Discount is retrieved for ProductName : {ProductName}, Amount : {Amount}",
             coupon.ProductName, coupon.Amount);
@@ -26,7 +26,9 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
     {
         var coupon = request.Coupon.Adapt<Coupon>();
         if (coupon is null)
+        {
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid request object"));
+        }
 
         await dbContext.Coupons.AddAsync(coupon);
         await dbContext.SaveChangesAsync();
@@ -41,7 +43,9 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
     {
         var coupon = request.Coupon.Adapt<Coupon>();
         if (coupon is null)
+        {
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid request object"));
+        }
 
         dbContext.Coupons.Update(coupon);
         await dbContext.SaveChangesAsync();
@@ -59,8 +63,10 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
             .FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
 
         if (coupon is null)
+        {
             throw new RpcException(new Status(StatusCode.NotFound,
                 $"Discount with ProductName : {request.ProductName} not found"));
+        }
 
         dbContext.Coupons.Remove(coupon);
         await dbContext.SaveChangesAsync();
