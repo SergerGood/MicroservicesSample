@@ -10,7 +10,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder.Property(x => x.Id)
             .HasConversion(
-                customerId => customerId.Value,
+                productId => productId.Value,
                 dbId => ProductId.Of(dbId));
 
         builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
