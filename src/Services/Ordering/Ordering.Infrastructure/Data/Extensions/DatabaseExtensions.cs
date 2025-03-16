@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Ordering.Infrastructure.Data.Migrations;
 
 namespace Ordering.Infrastructure.Data.Extensions;
 
