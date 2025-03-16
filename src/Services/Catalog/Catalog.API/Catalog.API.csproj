@@ -14,16 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.HealthChecks.NpgSql"/>
-    <PackageReference Include="AspNetCore.HealthChecks.UI.Client"/>
-    <PackageReference Include="Carter"/>
-    <PackageReference Include="Mapster"/>
-    <PackageReference Include="Marten"/>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets"/>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="9.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
+    <PackageReference Include="Carter" Version="9.0.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Marten" Version="7.39.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.2" />
   </ItemGroup>
 
 </Project>
