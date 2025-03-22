@@ -108,3 +108,6 @@ GET https://{{ServiceHost}}:{{ServicePort}}/orders/customers/f3a5f583-675e-47e8-
 
 ### DELETE
 DELETE https://{{ServiceHost}}:{{ServicePort}}/orders/90579caf-aa09-42a1-ab55-d1299fb0ade1
+
+### HC
+GET https://{{ServiceHost}}:{{ServicePort}}/hc
