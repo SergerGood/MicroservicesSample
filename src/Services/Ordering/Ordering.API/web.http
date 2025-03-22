@@ -1,2 +1,110 @@
-﻿### HC
-GET https://{{ServiceHost}}:{{ServicePort}}/hc
+﻿### GET
+GET https://{{ServiceHost}}:{{ServicePort}}/orders
+
+### POST
+POST https://{{ServiceHost}}:{{ServicePort}}/orders
+Content-Type: application/json
+
+{
+    "Order": {
+        "customerId": "f3a5f583-675e-47e8-a4db-68477e4dd787",
+        "orderName": "ORD_5",
+        "shippingAddress": {
+            "firstName": "mehmet",
+            "lastName": "ozkaya",
+            "emailAddress": "mehmet@gmail.com",
+            "addressLine": "Bahcelievler No:4",
+            "country": "Turkey",
+            "state": "Istanbul",
+            "zipCode": "38050"
+        },
+        "billingAddress": {
+            "firstName": "mehmet",
+            "lastName": "ozkaya",
+            "emailAddress": "mehmet@gmail.com",
+            "addressLine": "Bahcelievler No:4",
+            "country": "Turkey",
+            "state": "Istanbul",
+            "zipCode": "38050"
+        },
+        "payment": {
+            "cardName": "mehmet",
+            "cardNumber": "123-123-123-123",
+            "expiration": "12/28",
+            "cvv": "355",
+            "paymentMethod": "1"
+        },
+        "orderStatus": 2,
+        "orderItems": [
+            {
+                "productId": "6538770e-1c26-40cf-bdc5-7070736c489d",
+                "quantity": 2,
+                "price": 500.0
+            },
+            {
+                "productId": "436e143c-b470-4350-8c2c-768b95ca29fa",
+                "quantity": 1,
+                "price": 400.0
+            }
+        ]
+    }
+}
+
+### PUT
+PUT https://{{ServiceHost}}:{{ServicePort}}/order
+Content-Type: application/json
+
+{
+    "Order": {
+        "Id": "90579caf-aa09-42a1-ab55-d1299fb0ade1",
+        "customerId": "f3a5f583-675e-47e8-a4db-68477e4dd787",
+        "orderName": "ORD_5",
+        "shippingAddress": {
+            "firstName": "mehmet",
+            "lastName": "ozkaya",
+            "emailAddress": "mehmet@gmail.com",
+            "addressLine": "Bahcelievler No:4",
+            "country": "Turkey",
+            "state": "Istanbul",
+            "zipCode": "38050"
+        },
+        "billingAddress": {
+            "firstName": "mehmet",
+            "lastName": "ozkaya",
+            "emailAddress": "mehmet@gmail.com",
+            "addressLine": "Bahcelievler No:4",
+            "country": "Turkey",
+            "state": "Istanbul",
+            "zipCode": "38050"
+        },
+        "payment": {
+            "cardName": "mehmet",
+            "cardNumber": "123-123-123-123",
+            "expiration": "12/28",
+            "cvv": "355",
+            "paymentMethod": "1"
+        },
+        "orderStatus": 2,
+        "orderItems": [
+            {
+                "productId": "6538770e-1c26-40cf-bdc5-7070736c489d",
+                "quantity": 2,
+                "price": 500.0
+            },
+            {
+                "productId": "436e143c-b470-4350-8c2c-768b95ca29fa",
+                "quantity": 1,
+                "price": 400.0
+            }
+        ]
+    }
+}
+
+### GET by name
+GET https://{{ServiceHost}}:{{ServicePort}}/orders/ORD_1
+
+### GET by customer
+GET https://{{ServiceHost}}:{{ServicePort}}/orders/customers/f3a5f583-675e-47e8-a4db-68477e4dd787
+
+### DELETE
+DELETE https://{{ServiceHost}}:{{ServicePort}}/orders/90579caf-aa09-42a1-ab55-d1299fb0ade1

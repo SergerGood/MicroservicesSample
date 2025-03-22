@@ -1,10 +1,9 @@
 ﻿using BuildingBlocks.Pagination;
 using Ordering.Application.Orders.Queries.GetOrders;
-using Ordering.Domain.Models;
 
 namespace Ordering.API.Endpoints;
 
-public record GetOrdersResponse(PaginatedResult<Order> Orders);
+public record GetOrdersResponse(PaginatedResult<OrderDto> Orders);
 
 public class GetOrders : ICarterModule
 {
