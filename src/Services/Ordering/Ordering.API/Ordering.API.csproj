@@ -6,10 +6,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
-    <PackageReference Include="Carter" Version="9.0.0"/>
-    <PackageReference Include="Mapster" Version="7.4.0"/>
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" />
+    <PackageReference Include="Carter"/>
+    <PackageReference Include="Mapster"/>
   </ItemGroup>
 
 </Project>
