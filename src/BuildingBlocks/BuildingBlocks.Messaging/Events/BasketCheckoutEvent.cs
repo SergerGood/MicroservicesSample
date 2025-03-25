@@ -4,7 +4,7 @@ public record BasketCheckoutEvent : IntegrationEvent
 {
     public required string UserName { get; init; }
     public required Guid CustomerId { get; init; }
-    public required decimal TotalPrice { get; init; }
+    public decimal TotalPrice { get; set; }
 
     public required string FirstName { get; init; }
     public required string LastName { get; init; }

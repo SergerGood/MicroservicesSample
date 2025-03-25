@@ -1,6 +1,7 @@
 using Basket.API.Data;
 using BuildingBlocks.Behaviors;
 using BuildingBlocks.Exceptions.Handler;
+using BuildingBlocks.Messaging.MassTransit;
 using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -45,6 +46,8 @@ builder.Services
 builder.Services
     .AddExceptionHandler<CustomExceptionHandler>()
     .AddValidatorsFromAssembly(assembly);
+
+builder.Services.AddMessageBroker(configuration);
 
 builder.Services
     .AddHealthChecks()
