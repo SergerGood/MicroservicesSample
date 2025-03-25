@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["Directory.Packages.props", "."]
 COPY ["Directory.Build.props", "."]
 COPY ["src/Services/Basket/Basket.API/Basket.API.csproj", "src/Services/Basket/Basket.API/"]
-COPY ["src/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/"]
+COPY ["src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/BuildingBlocks/"]
 RUN dotnet restore "./src/Services/Basket/Basket.API/Basket.API.csproj"
 COPY . .
 WORKDIR "/src/src/Services/Basket/Basket.API"
