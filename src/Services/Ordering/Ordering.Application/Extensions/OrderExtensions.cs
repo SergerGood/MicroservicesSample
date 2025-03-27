@@ -3,7 +3,11 @@
 public static class OrderExtensions
 {
     public static IEnumerable<OrderDto> ToOrderDto(this IEnumerable<Order> orders) =>
-        orders.Select(order => new OrderDto(
+        orders.Select(ToOrderDto);
+
+    public static OrderDto ToOrderDto(this Order order)
+    {
+        return new OrderDto(
             order.Id.Value,
             order.CustomerId.Value,
             order.OrderName.Value,
@@ -34,5 +38,6 @@ public static class OrderExtensions
             order.Status,
             order.OrderItems.Select(x =>
                 new OrderItemDto(x.OrderId.Value, x.ProductId.Value, x.Quantity, x.Price)).ToList()
-        ));
+        );
+    }
 }
