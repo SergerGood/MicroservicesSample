@@ -26,3 +26,27 @@ DELETE https://{{ServiceHost}}:{{ServicePort}}/basket/User Name
 
 ### HC
 GET https://{{ServiceHost}}:{{ServicePort}}/hc
+
+### POST checkout
+POST https://{{ServiceHost}}:{{ServicePort}}/basket/checkout
+Content-Type: application/json
+
+{
+  "BasketCheckoutDto": {
+    "UserName": "User Name",
+    "CustomerId": "f3a5f583-675e-47e8-a4db-68477e4dd787",
+    "TotalPrice": 0,
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "EmailAddress": "test@test.com",
+    "AddressLine": "Street",
+    "Country": "Russia",
+    "State": "Moscow",
+    "ZipCode": "12345",
+    "CardName": "User Name",
+    "CardNumber": "11-2222",
+    "Expiration": "11/30",
+    "Cvv": "333",
+    "PaymentMethod": "1"
+  }
+}
