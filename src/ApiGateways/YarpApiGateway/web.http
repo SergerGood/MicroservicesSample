@@ -1,0 +1,4 @@
+GET https://{{ServiceHost}}:{{ServicePort}}
+Content-Type: application/json
+
+###
