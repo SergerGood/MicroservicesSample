@@ -38,6 +38,12 @@ services:
   rabbitmq:
     image: rabbitmq:management
 
+  yarpapigateway:
+    image: ${DOCKER_REGISTRY-}yarpapigateway
+    build:
+      context: .
+      dockerfile: src/ApiGateways/YarpApiGateway/Dockerfile
+
 volumes:
   postgres_catalog:
   postgres_basket:
