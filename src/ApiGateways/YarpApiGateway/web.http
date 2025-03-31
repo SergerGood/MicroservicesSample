@@ -2,3 +2,9 @@ GET https://{{ServiceHost}}:{{ServicePort}}/catalog-service/products
 Content-Type: application/json
 
 ###
+GET https://{{ServiceHost}}:{{ServicePort}}/basket-service/basket/User Name
+Content-Type: application/json
+
+###
+GET https://{{ServiceHost}}:{{ServicePort}}/ordering-service/orders
+Content-Type: application/json
