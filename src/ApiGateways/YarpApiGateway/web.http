@@ -1,4 +1,4 @@
-GET https://{{ServiceHost}}:{{ServicePort}}
+GET https://{{ServiceHost}}:{{ServicePort}}/catalog-service/products
 Content-Type: application/json
 
 ###
