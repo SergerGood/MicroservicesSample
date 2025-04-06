@@ -1,4 +1,3 @@
-using Refit;
 using Shopping.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);

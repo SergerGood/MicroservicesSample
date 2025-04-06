@@ -1,5 +1,4 @@
-﻿using Refit;
-using Shopping.Web.Models.Catalog;
+﻿using Shopping.Web.Models.Catalog;
 
 namespace Shopping.Web.Services;
 
