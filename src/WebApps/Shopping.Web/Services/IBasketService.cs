@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using Shopping.Web.Models.Basket;
 
 namespace Shopping.Web.Services;
 

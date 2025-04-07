@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shopping.Web.Models.Basket;
 using Shopping.Web.Models.Catalog;
 
 namespace Shopping.Web.Pages;
