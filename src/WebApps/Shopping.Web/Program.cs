@@ -3,10 +3,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddRefitClient<ICatalogService>()
-    .ConfigureHttpClient(client =>
-    {
-        client.BaseAddress = new Uri(builder.Configuration["ApiSettings:GatewayAddress"]);
-    });
+    .ConfigureHttpClient(client => ConfigureClient(client, builder));
+
+builder.Services.AddRefitClient<IBasketService>()
+    .ConfigureHttpClient(client => ConfigureClient(client, builder));
 
 var app = builder.Build();
 
@@ -28,3 +28,12 @@ app.MapRazorPages()
     .WithStaticAssets();
 
 app.Run();
+return;
+
+void ConfigureClient(HttpClient httpClient, WebApplicationBuilder webApplicationBuilder)
+{
+    var uriString = webApplicationBuilder.Configuration["ApiSettings:GatewayAddress"]
+        ?? throw new InvalidOperationException("Gateway Address not configured");
+
+    httpClient.BaseAddress = new Uri(uriString);
+}
