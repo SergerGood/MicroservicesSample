@@ -25,7 +25,7 @@ public class CheckoutModel(IBasketService basketService, ILogger<CheckoutModel> 
             return Page();
         }
 
-        Order.CustomerId = new Guid("e8838071-72d3-4efa-910e-3303a9a9774f");
+        Order.CustomerId = new Guid("F3A5F583-675E-47E8-A4DB-68477E4DD787");
         Order.UserName = Cart.UserName;
         Order.TotalPrice = Cart.TotalPrice;
 

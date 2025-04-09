@@ -8,6 +8,9 @@ builder.Services.AddRefitClient<ICatalogService>()
 builder.Services.AddRefitClient<IBasketService>()
     .ConfigureHttpClient(client => ConfigureClient(client, builder));
 
+builder.Services.AddRefitClient<IOrderingService>()
+    .ConfigureHttpClient(client => ConfigureClient(client, builder));
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
