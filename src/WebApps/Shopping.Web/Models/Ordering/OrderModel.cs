@@ -24,7 +24,7 @@ public record PaymentModel(
     string CardNumber,
     string Expiration,
     string Cvv,
-    string PaymentMethod);
+    int PaymentMethod);
 
 public record OrderItemModel(
     Guid OrderId,

@@ -18,5 +18,5 @@ public record BasketCheckoutEvent : IntegrationEvent
     public required string CardNumber { get; init; }
     public required string Expiration { get; init; }
     public required string Cvv { get; init; }
-    public required string PaymentMethod { get; init; }
+    public required int PaymentMethod { get; init; }
 }

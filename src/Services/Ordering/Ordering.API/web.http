@@ -32,7 +32,7 @@ Content-Type: application/json
             "cardNumber": "123-123-123-123",
             "expiration": "12/28",
             "cvv": "355",
-            "paymentMethod": "1"
+            "paymentMethod": 1
         },
         "orderStatus": 2,
         "orderItems": [
@@ -82,7 +82,7 @@ Content-Type: application/json
             "cardNumber": "123-123-123-123",
             "expiration": "12/28",
             "cvv": "355",
-            "paymentMethod": "1"
+            "paymentMethod": 1
         },
         "orderStatus": 2,
         "orderItems": [

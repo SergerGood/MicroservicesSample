@@ -47,6 +47,6 @@ Content-Type: application/json
     "CardNumber": "11-2222",
     "Expiration": "11/30",
     "Cvv": "333",
-    "PaymentMethod": "1"
+    "PaymentMethod": 1
   }
 }

@@ -6,7 +6,7 @@ public record Payment
     {
     }
 
-    private Payment(string cardName, string cardNumber, string expiration, string cvv, string paymentMethod)
+    private Payment(string cardName, string cardNumber, string expiration, string cvv, int paymentMethod)
     {
         CardName = cardName;
         CardNumber = cardNumber;
@@ -19,9 +19,9 @@ public record Payment
     public string CardNumber { get; }
     public string Expiration { get; }
     public string Cvv { get; }
-    public string PaymentMethod { get; }
+    public int PaymentMethod { get; }
 
-    public static Payment Of(string cardName, string cardNumber, string expiration, string cvv, string paymentMethod)
+    public static Payment Of(string cardName, string cardNumber, string expiration, string cvv, int paymentMethod)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(cardName);
         ArgumentException.ThrowIfNullOrWhiteSpace(cardNumber);
