@@ -5,7 +5,7 @@ using MassTransit;
 
 namespace Basket.API.Basket.CheckoutBasket;
 
-public record CheckoutBasketCommand(BasketCheckoutDto BasketCheckoutDto) : ICommand<CheckoutBasketResult>;
+public record CheckoutBasketCommand(BasketCheckoutDto BasketCheckout) : ICommand<CheckoutBasketResult>;
 
 public record CheckoutBasketResult(bool IsSuccess);
 
@@ -13,8 +13,8 @@ internal class CheckoutBasketCommandValidator : AbstractValidator<CheckoutBasket
 {
     public CheckoutBasketCommandValidator()
     {
-        RuleFor(x => x.BasketCheckoutDto).NotNull().WithMessage("BasketCheckoutDto cannot be null");
-        RuleFor(x => x.BasketCheckoutDto.UserName).NotEmpty().WithMessage("UserName is required");
+        RuleFor(x => x.BasketCheckout).NotNull().WithMessage("BasketCheckoutDto cannot be null");
+        RuleFor(x => x.BasketCheckout.UserName).NotEmpty().WithMessage("UserName is required");
     }
 }
 
@@ -23,18 +23,18 @@ public class CheckoutBasketCommandHandler(IBasketRepository repository, IPublish
 {
     public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
     {
-        var basket = await repository.GetBasketAsync(command.BasketCheckoutDto.UserName, cancellationToken);
+        var basket = await repository.GetBasketAsync(command.BasketCheckout.UserName, cancellationToken);
         if (basket is null)
         {
             return new CheckoutBasketResult(false);
         }
 
-        var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
+        var eventMessage = command.BasketCheckout.Adapt<BasketCheckoutEvent>();
         eventMessage.TotalPrice = basket.TotalPrice;
 
         await publishEndpoint.Publish(eventMessage, cancellationToken);
 
-        await repository.DeleteBasketAsync(command.BasketCheckoutDto.UserName, cancellationToken);
+        await repository.DeleteBasketAsync(command.BasketCheckout.UserName, cancellationToken);
 
         return new CheckoutBasketResult(true);
     }
