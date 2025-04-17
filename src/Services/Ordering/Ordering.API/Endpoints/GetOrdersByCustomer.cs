@@ -8,7 +8,7 @@ public class GetOrdersByCustomer : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/orders/customer/{customerId}", Handle)
+        app.MapGet("/orders/customer/{customerId:guid}", Handle)
             .WithName("GetOrdersByCustomer")
             .Produces<GetOrdersByCustomerResponse>()
             .ProducesProblem(StatusCodes.Status404NotFound)

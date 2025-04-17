@@ -15,7 +15,7 @@ public class DeleteBasketEndpoints : ICarterModule
             .WithDescription("Delete Product");
     }
 
-    private async Task<IResult> Handle(string userName, ISender sender)
+    private static async Task<IResult> Handle(string userName, ISender sender)
     {
         var result = await sender.Send(new DeleteBasketCommand(userName));
         var response = result.Adapt<DeleteBasketResult>();

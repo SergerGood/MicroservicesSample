@@ -24,10 +24,6 @@ public class CheckoutBasketCommandHandler(IBasketRepository repository, IPublish
     public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
     {
         var basket = await repository.GetBasketAsync(command.BasketCheckout.UserName, cancellationToken);
-        if (basket is null)
-        {
-            return new CheckoutBasketResult(false);
-        }
 
         var eventMessage = command.BasketCheckout.Adapt<BasketCheckoutEvent>();
         eventMessage.TotalPrice = basket.TotalPrice;

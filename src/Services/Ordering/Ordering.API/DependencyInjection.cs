@@ -23,7 +23,7 @@ public static class DependencyInjection
     public static WebApplication UseApiServices(this WebApplication app)
     {
         app.MapCarter();
-        app.UseExceptionHandler(options => { });
+        app.UseExceptionHandler(_ => { });
 
         app.UseHealthChecks("/hc",
             new HealthCheckOptions

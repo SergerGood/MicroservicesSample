@@ -8,7 +8,7 @@ public class DeleteOrder : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapDelete("/orders/{id}", Handle)
+        app.MapDelete("/orders/{id:guid}", Handle)
             .WithName("DeleteOrder")
             .Produces<DeleteOrderResponse>()
             .Produces(StatusCodes.Status400BadRequest)

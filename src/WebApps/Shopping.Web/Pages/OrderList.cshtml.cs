@@ -2,7 +2,7 @@
 
 namespace Shopping.Web.Pages;
 
-public class OrderListModel(IOrderingService orderingService, ILogger<OrderListModel> logger) : PageModel
+public class OrderListModel(IOrderingService orderingService) : PageModel
 {
     public IEnumerable<OrderModel> Orders { get; set; } = [];
 

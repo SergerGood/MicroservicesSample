@@ -18,7 +18,7 @@ public class CheckoutBasketEndpoint : ICarterModule
             .WithDescription("Checkout basket");
     }
 
-    private async Task<IResult> Handle(CheckoutBasketRequest request, ISender sender)
+    private static async Task<IResult> Handle(CheckoutBasketRequest request, ISender sender)
     {
         var command = request.Adapt<CheckoutBasketCommand>();
         var result = await sender.Send(command);

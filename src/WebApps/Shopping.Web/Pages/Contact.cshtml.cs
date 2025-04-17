@@ -1,5 +1,3 @@
 ﻿namespace Shopping.Web.Pages;
 
-public class ContactModel : PageModel
-{
-}
+public class ContactModel : PageModel;
